@@ -52,26 +52,35 @@ type DNSType uint16
 
 // DNSType known values.
 const (
-	DNSTypeA     DNSType = 1   // a host address
-	DNSTypeNS    DNSType = 2   // an authoritative name server
-	DNSTypeMD    DNSType = 3   // a mail destination (Obsolete - use MX)
-	DNSTypeMF    DNSType = 4   // a mail forwarder (Obsolete - use MX)
-	DNSTypeCNAME DNSType = 5   // the canonical name for an alias
-	DNSTypeSOA   DNSType = 6   // marks the start of a zone of authority
-	DNSTypeMB    DNSType = 7   // a mailbox domain name (EXPERIMENTAL)
-	DNSTypeMG    DNSType = 8   // a mail group member (EXPERIMENTAL)
-	DNSTypeMR    DNSType = 9   // a mail rename domain name (EXPERIMENTAL)
-	DNSTypeNULL  DNSType = 10  // a null RR (EXPERIMENTAL)
-	DNSTypeWKS   DNSType = 11  // a well known service description
-	DNSTypePTR   DNSType = 12  // a domain name pointer
-	DNSTypeHINFO DNSType = 13  // host information
-	DNSTypeMINFO DNSType = 14  // mailbox or mail list information
-	DNSTypeMX    DNSType = 15  // mail exchange
-	DNSTypeTXT   DNSType = 16  // text strings
-	DNSTypeAAAA  DNSType = 28  // a IPv6 host address [RFC3596]
-	DNSTypeSRV   DNSType = 33  // server discovery [RFC2782] [RFC6195]
-	DNSTypeOPT   DNSType = 41  // OPT Pseudo-RR [RFC6891]
-	DNSTypeURI   DNSType = 256 // URI RR [RFC7553]
+	DNSTypeA      DNSType = 1   // a host address
+	DNSTypeNS     DNSType = 2   // an authoritative name server
+	DNSTypeMD     DNSType = 3   // a mail destination (Obsolete - use MX)
+	DNSTypeMF     DNSType = 4   // a mail forwarder (Obsolete - use MX)
+	DNSTypeCNAME  DNSType = 5   // the canonical name for an alias
+	DNSTypeSOA    DNSType = 6   // marks the start of a zone of authority
+	DNSTypeMB     DNSType = 7   // a mailbox domain name (EXPERIMENTAL)
+	DNSTypeMG     DNSType = 8   // a mail group member (EXPERIMENTAL)
+	DNSTypeMR     DNSType = 9   // a mail rename domain name (EXPERIMENTAL)
+	DNSTypeNULL   DNSType = 10  // a null RR (EXPERIMENTAL)
+	DNSTypeWKS    DNSType = 11  // a well known service description
+	DNSTypePTR    DNSType = 12  // a domain name pointer
+	DNSTypeHINFO  DNSType = 13  // host information
+	DNSTypeMINFO  DNSType = 14  // mailbox or mail list information
+	DNSTypeMX     DNSType = 15  // mail exchange
+	DNSTypeTXT    DNSType = 16  // text strings
+	DNSTypeAAAA   DNSType = 28  // a IPv6 host address [RFC3596]
+	DNSTypeSRV    DNSType = 33  // server discovery [RFC2782] [RFC6195]
+	DNSTypeNAPTR  DNSType = 35  // Naming Authority Pointer [RFC2915] [RFC2168] [RFC3403]
+	DNSTypeDNAME  DNSType = 39  // Delegation name record [RFC6672]
+	DNSTypeOPT    DNSType = 41  // OPT Pseudo-RR [RFC6891]
+	DNSTypeDS     DNSType = 43  // Delegation signer [RFC4034]
+	DNSTypeRRSIG  DNSType = 46  // DNSSEC signature	[RFC4034]
+	DNSTypeNSEC   DNSType = 47  // Next Secure record  [RFC4034]
+	DNSTypeDNSKEY DNSType = 48  // DNS Key record  [RFC4034]
+	DNSType65     DNSType = 65  // HTTPS [draft-ietf-dnsop-svcb-https-00]
+	DNSTypeTSIG   DNSType = 250 // Transaction Signature [RFC2845]
+	DNSTypeURI    DNSType = 256 // URI RR [RFC7553]
+	DNSTypeDLV    DNSType = 32769 // DNSSEC Lookaside Validation record  [RFC4431]
 )
 
 func (dt DNSType) String() string {
@@ -114,10 +123,28 @@ func (dt DNSType) String() string {
 		return "AAAA"
 	case DNSTypeSRV:
 		return "SRV"
+	case DNSTypeNAPTR:
+		return "NAPTR"
 	case DNSTypeOPT:
 		return "OPT"
+	case DNSType65:
+		return "TYPE65"
 	case DNSTypeURI:
 		return "URI"
+	case DNSTypeDNAME:
+		return "DNAME"
+	case DNSTypeDS:
+		return "DS"
+	case DNSTypeNSEC:
+		return "NSEC"
+	case DNSTypeDNSKEY:
+		return "DNSKEY"
+	case DNSTypeRRSIG:
+		return "RRSIG"
+	case DNSTypeTSIG:
+		return "TSIG"
+	case DNSTypeDLV:
+		return "DLV"
 	}
 }
 
