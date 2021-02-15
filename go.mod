@@ -1,4 +1,4 @@
-module github.com/google/gopacket
+module github.com/asagratini/gopacket
 
 go 1.12
 
